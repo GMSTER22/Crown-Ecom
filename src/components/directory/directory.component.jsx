@@ -1,7 +1,7 @@
 import CategoryItem from "../category-item/category-item.component";
-import "./category-container.styles.scss";
+import "./directory.styles.scss";
 
-const CategoryContainer = () => {
+const Directory = () => {
     
     const categories = [
         {
@@ -45,4 +45,4 @@ const CategoryContainer = () => {
   );
 }
 
-export default CategoryContainer;
+export default Directory;
