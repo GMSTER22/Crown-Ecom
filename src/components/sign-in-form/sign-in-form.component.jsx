@@ -5,7 +5,7 @@ import FormInput from '../form-input/form-input.component';
 
 import Button from '../button/button.component';
 
-import { signInAuthUserWithEmailAndPassword, signInWithGooglePopup, createUserDocumentFromAuth } from '../utils/firebase/firebase.utils';
+import { signInAuthUserWithEmailAndPassword, signInWithGooglePopup } from '../utils/firebase/firebase.utils';
 
 import './sign-in-form.styles.scss';
 
@@ -22,9 +22,8 @@ const SignInForm = () => {
 
   const resetFormFields = () => setFormFields( defaultFormFields );
 
-  const logGoogleUser = async () => {
+  const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
   }
 
   const handleSubmit = async (event) => {
@@ -34,7 +33,7 @@ const SignInForm = () => {
 
     try {
 
-      const userCredential = await signInAuthUserWithEmailAndPassword( email, password );
+      const user = await signInAuthUserWithEmailAndPassword( email, password );
 
       resetFormFields();
 
@@ -67,7 +66,7 @@ const SignInForm = () => {
 
   return (
 
-    <div className="sign-up-container">
+    <div className="sign-in-container">
 
       <h2>I already have an account?</h2>
       <h3>Sign in with your email and password</h3>
@@ -96,7 +95,7 @@ const SignInForm = () => {
 
           <Button type='submit'>SIGN IN</Button>
 
-          <Button type="button" buttonType={ 'google' } onClick={logGoogleUser}>
+          <Button type="button" buttonType={ 'google' } onClick={signInWithGoogle}>
             GOOGLE SIGN IN
           </Button>
 
