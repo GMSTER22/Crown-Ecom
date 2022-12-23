@@ -7,6 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './contexts/user.context';
 import { ProductProvider } from './contexts/products.context';
+import { CartDropdownProvider } from './contexts/cart-dropdown.context';
 
 import './index.scss';
 
@@ -15,9 +16,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ProductProvider>
-          <App />
-        </ProductProvider>
+        <CartDropdownProvider>
+          <ProductProvider>
+            <App />
+          </ProductProvider>
+        </CartDropdownProvider>
       </UserProvider>
     </BrowserRouter>    
   </React.StrictMode>
