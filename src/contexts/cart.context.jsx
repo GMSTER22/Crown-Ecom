@@ -41,8 +41,6 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 
 const clearCartItem = ( cartItems, cartItemToClear ) => cartItems.filter( cartItem => cartItem.id !== cartItemToClear.id );
 
-const computeTotal = ( cartItems ) => cartItems.reduce(( total, cartItem ) => total += cartItem.price * cartItem.quantity, 0 );
-
 export const CartContext = createContext({
   isCartOpen:  false,
   setIsCartOpen: () => {},
