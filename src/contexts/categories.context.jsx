@@ -3,15 +3,13 @@ import { createContext, useState, useEffect } from "react";
 
 import { getCategoriesAndDocuments } from "../components/utils/firebase/firebase.utils.js";
 
-export const ProductsContext = createContext({
-  products: []
+export const CategoriesContext = createContext({
+  categories: {}
 });
 
-export const ProductProvider = ( { children } ) => {
+export const CategoriesProvider = ( { children } ) => {
 
-  const [products, setProducts] = useState( [] );
-
-  const value = products;
+  const [ categoriesMap, setCategoriesMap ] = useState({});
 
   useEffect(() => {
 
@@ -19,21 +17,23 @@ export const ProductProvider = ( { children } ) => {
 
       const categoryMap = await getCategoriesAndDocuments();
 
-      setProducts(categoryMap['mens'])
+      setCategoriesMap(categoryMap);
 
     };
 
     getCategoriesMap();
 
-  }, [])
+  }, []);
+  
+  const value = { categoriesMap };
 
   return (
 
-    <ProductsContext.Provider value={ value }>
+    <CategoriesContext.Provider value={ value }>
       
       { children }
       
-    </ProductsContext.Provider>
+    </CategoriesContext.Provider>
 
   )
 
