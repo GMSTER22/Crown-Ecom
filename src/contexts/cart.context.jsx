@@ -1,7 +1,7 @@
 
 import { createContext, useReducer } from "react";
 
-import { createAction } from "../components/utils/reducer/reducer.utils";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 const addCartItem = (cartItems, productToAdd) => {
 
@@ -45,11 +45,7 @@ const clearCartItem = ( cartItems, cartItemToClear ) => cartItems.filter( cartIt
 
 export const CartContext = createContext({
   isCartOpen:  false,
-  // setIsCartOpen: () => {},
   cartItems: [],
-  // addItemToCart: () => {},
-  // RemoveItemFromCart: () => {},
-  // clearItemFromCart: () => {},
   cartCount: 0,
   cartTotal: 0
 });
