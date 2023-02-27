@@ -9,7 +9,7 @@ import CategoriesPreview from '../categories-preview/categories-preview.componen
 
 import Category from '../category/category.component';
 
-import { fetchCategoriesAsync } from '../../store/categories/category.action';
+import { fetchCategoriesStart } from '../../store/categories/category.action';
 
 const Shop = () => {
 
@@ -17,7 +17,7 @@ const Shop = () => {
   
   useEffect(() => {
 
-    dispatch(fetchCategoriesAsync());
+    dispatch(fetchCategoriesStart());
 
   }, [dispatch]);
 
